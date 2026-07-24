@@ -1,0 +1,125 @@
+{% extends "./base.html" %}
+{% block content %}
+{% load static %}
+<div class="contact-div">
+    {% include './header.html' %}
+    <section class="contact-hero align-items-center justify-content-center bg-darkblue">
+        <div class="container text-white" data-aos="zoom-out">
+            <div class="row">
+                <div class="col-md-12 text-center mb-3 mt-5 mt-md-0">
+                    <h3>Contact Us</h3>
+                </div>
+                <div class="col-md-6 mt-auto mb-auto">
+                    <h6 class="fw-600">Feel Free to Contact</h6>
+                    <p class="fs-12">We guarantee confidentiality on your data and services. Feel free to contact on enquiries, feedback and suggestions.</p>
+                    <div class="mb-3 mb-md-0">
+                        <table class="contact-table">
+                            <tbody>
+                                <tr>
+                                    <td class="pe-3">
+                                        <i class="bi bi-geo-alt "></i>
+                                    </td>
+                                    <td class="white-space-pre-line">Al Sajaa Industrial area, Sharjah
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="pe-3"><i class="bi bi-telephone"></i></td>
+                                    <td>+971 50 534 2836, +971 50 534 2457</td>
+                                </tr>
+                                <tr>
+                                    <td class="pe-3"><i class="bi bi-envelope"></i></td>
+                                    <td>Info@spokesenergy.com</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td> 
+                                      <div class="contact-social">
+                                        <a href="https://www.facebook.com/profile.php?id=100085327793096&mibextid=ZbWKwL" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
+                                        <a href="https://instagram.com/spokesenergy?igshid=YmMyMTA2M2Y=" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
+                                        <a href="https://www.linkedin.com/in/spokes-energy-steelfabcoating" class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
+                                      </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-5 offset-md-1">
+                    <form method="post" action="{% url 'common:contact' %}">{% csrf_token %}
+                        <div class="form-body">
+                            <div class="field-col mb-4">
+                              <div class="input-div">
+                                <div class="div">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" class="form-control input" autocomplete="off" name="name" required> 
+                                </div>
+                              </div>
+                            </div>
+                            <div class="field-col mb-4">
+                                <div class="input-div">
+                                  <div class="div">
+                                      <label class="form-label">Email Address</label>
+                                      <input type="text" class="form-control input" autocomplete="off" name="email" required> 
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="field-col mb-4">
+                                <div class="input-div">
+                                  <div class="div h-100-px">
+                                    <label class="form-label t-20">Your Message</label>
+                                    <textarea class="form-control input bg-transparent text-white fs-12 border-0 h-100-px" name='message'  required></textarea>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-footer">
+                                <input type="hidden" name="recaptcha_token">
+                                <button type="submit" style="display: none;" id="BTN_SUBMIT_HIDDEN"></button>
+                                <button type="button" class="btn w-100 BTN_SUBMIT" onclick="submitWithReCaptcha()">Send</button>
+                
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="contact-map pt-0 pb-0">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1803.245084792301!2d55.63181221956679!3d25.3213278211575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ef5f39a7197b961%3A0x5a65b01b87763ef4!2sSpokes%20Energy!5e0!3m2!1sen!2sin!4v1665575322604!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+    <!-- ======= Footer ======= -->
+    {% include './footer.html' %} 
+    <!-- End Footer -->
+</div><!-- contact-div -->
+{% endblock %}
+{% block javascript %}
+<script src="https://www.google.com/recaptcha/api.js?render={{recaptcha_site_key}}"></script>
+<script>
+    window.recaptcha_site_key="{{recaptcha_site_key}}";
+
+    function submitWithReCaptcha() {
+        if(window.captcha_loading) return;
+        window.captcha_loading=true;
+        grecaptcha.execute(window.recaptcha_site_key, {action: 'onlineadmission'}).then(function(token) {
+          $('input[name="recaptcha_token"]').val(token);
+          window.captcha_loading=false;
+          $('#BTN_SUBMIT_HIDDEN').click();
+        });
+      }
+
+    const inputs = document.querySelectorAll(".input");
+    function addcl(){
+        let parent = this.parentNode.parentNode;
+        parent.classList.add("focus");
+    }
+    function remcl(){
+        let parent = this.parentNode.parentNode;
+        if(this.value == ""){
+            parent.classList.remove("focus");
+        }
+    }
+    inputs.forEach(input => {
+        input.addEventListener("focus", addcl);
+        input.addEventListener("blur", remcl);
+    });
+</script>
+{% endblock %} 

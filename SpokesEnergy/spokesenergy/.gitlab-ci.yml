@@ -1,0 +1,62 @@
+check:
+  # Local image on codesapone that's based off python3.8.1 on alpine. It has numpy wheels precompiled.
+  image: py3.8.1np:speakeazy
+  services:
+  - mysql:8.0.28
+  tags:
+    - codesapone
+  before_script:
+    - pip install --upgrade -r requirements.txt
+  stage: test
+  variables:
+    DJANGO_CONFIG: "test"
+    MYSQL_DATABASE: "randomdb"
+    MYSQL_ROOT_PASSWORD: "randompass"
+  script:
+    - python3 manage.py migrate
+    - echo "The following should say 'No changes detected', else make sure you committed your migration files" && python3 manage.py MAKEMIGRATIONS --check --dry-run
+    - python3 manage.py check --tag security --deploy --fail-level WARNING
+
+deploy_to_staging:
+  resource_group: staging
+  before_script:
+    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+    - curl -L --silent "https://gitlab.com/gitlab-org/incubation-engineering/devops-for-mobile-apps/load-secure-files/-/raw/main/installer" | bash
+    - eval $(ssh-agent -s)
+    - cat .secure_files/codesapone | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - git config --global user.email "codesap-one@example.com"
+    - git config --global user.name "codesap-one"
+  script:
+      - ssh root@staging.edusap.in "cd /home/spokesenergy/project/ && git branch --show-current | grep staging && git pull origin staging && bash server_restart.sh && exit 0"
+  stage: deploy
+  environment:
+    name: staging
+    url: https://spokesenergy.codesap.com
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "staging"'
+
+deploy_to_prod:
+  resource_group: deploy_to_prod
+  before_script:
+    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+    - curl -L --silent "https://gitlab.com/gitlab-org/incubation-engineering/devops-for-mobile-apps/load-secure-files/-/raw/main/installer" | bash
+    - eval $(ssh-agent -s)
+    - cat .secure_files/codesapone | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - git config --global user.email "codesap-one@example.com"
+    - git config --global user.name "codesap-one"
+  script:
+      - ssh root@staging.edusap.in "cd /root/ansible/ && git branch --show-current | grep main && git pull origin main && /root/.local/bin/ansible-playbook playbooks/spokesenergy_prod.yml --vault-password-file ./ignored/pass && exit 0"
+  stage: deploy
+  environment:
+    name: prod
+    url: https://spokesenergy.com
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "prod"'

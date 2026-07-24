@@ -1,0 +1,54 @@
+{% extends "./base.html" %}
+{% block content %}
+{% load static %}
+<div class="blog-main-div">
+    {% include './header.html' %}
+    <section class="inner-hero align-items-center">
+        <div class="container position-relative h-100" data-aos="zoom-out">
+            <div class="row h-100">
+                <div class="col-md-6 text-white position-relative">
+                    <div class="banner-title">
+                        <h6 class="fw-bold">Blog</h6>
+                        <h2> Unspoken story with some strokes.</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="pt-0 pb-0">
+        <div class="container-fluid" data-aos="zoom-out">
+            <div class="row">
+            {%for i in page%}
+               <div class="blog-card {%if forloop.counter|divisibleby:2 %}bg-white{%else%}bg-off-dark{%endif%} blog-wrapper mb-3">
+                  <div class="row align-items-center">
+                    <div class="col-md-4">
+                        <div class="blog-img mb-3 mb-md-0">
+                            <img src="{%if i.image%}{{i.image.url}}{%endif%}" alt="image-1" class="br-20"> 
+                        </div>
+                    </div>
+                    <div class="col-md-7 offset-md-1">
+                        <div class="blog-img content">
+                            <p class="fs-12 fw-600 text-light-dark">{{i.date|date:"d M Y"}}</p>
+                            <h6 class="fw-600">{{i.title}}</h6>
+                            <p class="fs-12 text-justify">
+                              {{i.description|default_if_none:""}}<a href="{%url 'common:blog-details' i.id %}" class="fw-600">Read More ></a>
+                            </p>
+                            <p class="fs-11 mb-0 fw-600">- {{i.author|default_if_none:""}}</p>
+                        </div>
+                    </div>
+                  </div>
+               </div>
+               {%endfor%}
+            </div>
+            <div class="row mt-25">
+                <div class="col-12">
+                {% include 'dashboard/pagination-buttons.html' %}  
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ======= Footer ======= -->
+    {% include './footer.html' %} 
+    <!-- End Footer -->
+</div>
+{% endblock %}

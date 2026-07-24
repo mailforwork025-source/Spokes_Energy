@@ -1,0 +1,19 @@
+/* login_page */
+.login_page .page-content {
+    padding: 120px 35px 80px;
+    box-shadow: 9px 19px 35px #dcdcdd;}
+/* form-head */
+.login_page .page-content .form-head {
+    margin-bottom: 25px;}
+/* form-body */
+.login_page .page-content .form-body .field-col {
+    margin-top: 15px;}
+.login_page .page-content .form-body .field-col .form-label {
+    font-size: 13px;}
+.login_page .page-content .form-body .field-col .form-control {
+    font-size: 14px;}
+/* form-foot */
+.login_page .page-content .form-foot {
+    margin-top: 25px;}
+.login_page .page-content .form-foot .btn-primary {
+    min-width: 100px;}

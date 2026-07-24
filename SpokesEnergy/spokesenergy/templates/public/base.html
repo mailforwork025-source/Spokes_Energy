@@ -1,0 +1,64 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+   <link rel="shortcut icon" type="image/ico" href="{% static 'general/images/favicon.ico' %}?v=27/10/2022">
+   <meta property="og:image" content="{% static 'public/images/logo.png' %}">
+   <meta property="og:description" content="Spokes Energy is a trusted solution for specialized services such as design, manufacturing, installation & commissioning of structural & functional products. Spokes Energy is equipped with a highly experienced pool of resources with machineries of cutting edge technologies. Spokes Design & Engineering team is highly experienced with the functional evaluation and design of specialized equipment in the oil & Gas and the Marine industries.Spokes Portfolio includes Engineering, fabrication, blasting, painting & machining facilities for Structural steel products">
+   <meta property="og:url" content="">
+   <meta property="og:title" content="Spokes Energy">
+   <title>Spokes Energy</title>
+   <link href="{% static 'general/fonts/webfonts/poppins/font-poppins.css' %}" rel="stylesheet" type="text/css">
+   <link href="{% static 'general/modules/bootstrap5/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+   <link href="{% static 'public/modules/bootstrap-icons/bootstrap-icons.css' %}?v=11/01/2021" rel="stylesheet" type="text/css">
+   <link href="{% static 'public/modules/aos/aos.css' %}?v=11/01/2021" rel="stylesheet" type="text/css">
+   <link href="{% static 'public/modules/glightbox/css/glightbox.min.css' %}?v=11/01/2021" rel="stylesheet" type="text/css">
+   <link href="{% static 'public/modules/swiper/swiper-bundle.min.css' %}?v=11/01/2021" rel="stylesheet" type="text/css">
+   <link href="{% static 'general/css/custom.css' %}?v=11/01/2021" rel="stylesheet" type="text/css">
+   <link href="{% static 'public/css/custom.css' %}?v=07/12/2022 17:34" rel="stylesheet" type="text/css">
+   <link href="{% static 'public/css/login-custom.css' %}?v=11/01/2021" rel="stylesheet" type="text/css">
+   <!-- jquery -->
+   <script src="{% static 'general/modules/jquery/jquery-3.3.1.min.js' %}" type="text/javascript"></script>
+  {% block style %}
+  {% endblock %}
+</head>
+<body>
+    <div class="pre_loader pre-loader"></div><!-- pre-loader -->
+
+     {% block content %}
+     {% endblock %}
+  <!-- xx -->
+  <script src="{% static 'public/modules/aos/aos.js' %}?v=20/10/2020" type="text/javascript"></script>
+  <script src="{% static 'public/modules/glightbox/js/glightbox.min.js' %}?v=20/10/2020" type="text/javascript"></script>
+  <script src="{% static 'public/modules/isotope-layout/isotope.pkgd.min.js' %}?v=20/10/2020" type="text/javascript"></script>
+  <script src="{% static 'public/modules/swiper/swiper-bundle.min.js' %}?v=20/10/2020" type="text/javascript"></script>
+  <script src="{% static 'general/modules/showmore/jquery.collapser.js' %}?v=20/10/2020" type="text/javascript"></script>
+  <script src="{% static 'public/modules/purecounter/purecounter.js' %}?v=20/10/2020" type="text/javascript"></script>
+  <!-- bootstrap5 -->
+  <script src="{% static 'general/modules/bootstrap5/js/bootstrap.min.js' %}" type="text/javascript"></script>
+  <!-- custom -->
+  <script src="{% static 'public/js/custom.js' %}?v=07/12/2022 12:19" type="text/javascript"></script>
+  <script src="{% static 'general/js/custom.js' %}?v=20/10/2020" type="text/javascript"></script>
+  {% block javascript %}
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/646a1b7dad80445890ee35d5/1h0v7mq96';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
+  {% endblock %}   
+  {% include 'general/common_messages.html' %}
+
+</body>  
+</html>

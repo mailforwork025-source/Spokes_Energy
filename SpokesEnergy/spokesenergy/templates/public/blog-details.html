@@ -1,0 +1,65 @@
+{% extends "./base.html" %}
+{% block content %}
+{% load static %}
+<div class="blog-details-main">
+    {% include './header.html' %}
+    <section class="bg-off-dark">
+        <div class="container" data-aos="zoom-out">
+            <div class="row">
+                <div class="col-12 mb-3">
+                    <div class="row">
+                        <div class="col-md-4">
+                           <div class="detail-head">
+                               <div class="row mb-3">
+                                   <div class="col-2">
+                                      <img src="{%if blog.author_image%}{{blog.author_image.url}}{%endif%}" class="rounded-circle img-fluid">
+                                   </div>
+                                   <div class="col-10">
+                                      <p class="fs-11 fw-600 text-light-dark mb-1">{{blog.date|date:"d M Y"}}</p>
+                                      <p class="fs-12 mb-0 fw-600">{{blog.author|default_if_none:""}}</p>
+                                   </div>
+                               </div>
+                               <h5 class="fw-600">{{blog.title}}</h5>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="details fs-12 text-justify">
+                     <p>
+                    {{blog.description}}
+                    </p>
+                    
+                  </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="details-img mb-md-3">
+                        <a href="{%if blog.image%}{{blog.image.url}}{%endif%}" class="glightbox">
+                            <img src="{%if blog.image%}{{blog.image.url}}{%endif%}" class="br-20"> 
+                        </a>   
+                    </div>
+                </div>
+            </div>
+            <div class="details-control">
+                <div class="row mt-3">
+                    <div class="col-12 text-center fs-12">
+                        {%if prev_blog%}
+                        <button class="btn btn-prev me-2" onclick="window.location.href='{%url 'common:blog-details' prev_blog.id%}'">
+                          <i class="bi bi-chevron-left me-2"></i>Previous Blog
+                        </button>
+                        {%endif%}
+                        {%if next_blog%}
+                        <button class="btn btn-next" onclick="window.location.href='{%url 'common:blog-details' next_blog.id%}'">
+                          Next Blog<i class="bi bi-chevron-right ms-2"></i>
+                        </button>
+                        {%endif%}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ======= Footer ======= -->
+    {% include './footer.html' %} 
+    <!-- End Footer -->
+</div>
+{% endblock %}

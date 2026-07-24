@@ -1,0 +1,20 @@
+[core]
+	repositoryformatversion = 0
+	fileMode = false
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = git@gitlab.com:devcodesap/spokesenergy.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "staging"]
+	remote = origin
+	merge = refs/heads/staging
+[branch "prod"]
+	remote = origin
+	merge = refs/heads/prod
+[branch "nadish_cln_cod"]
+	vscode-merge-base = origin/prod
+[pull]
+	rebase = false
+[branch "to_staging/nadish_cln_cod"]
+	vscode-merge-base = origin/staging

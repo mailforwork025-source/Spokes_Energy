@@ -1,0 +1,12 @@
+{% load static %}
+<div class="clients-slider swiper">
+  <div class="swiper-wrapper align-items-center">
+    {%for i in patners%}
+      {%if i.image%}
+        <div class="swiper-slide">
+            <img src="{{i.image.url}}" class="img-fluid" alt="{{i.title}}">
+        </div>
+        {%endif%}
+    {%endfor%}
+  </div>
+</div>

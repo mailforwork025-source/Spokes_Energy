@@ -1,0 +1,14 @@
+static_root/
+env/*
+Project/local_settings.py
+*/__pycache__/
+*.pyc
+db.sqlite3
+imageFolder/
+temp_data/*
+.vscode/settings.json
+nohup.out
+.DS_Store
+.python-version
+!temp_data
+!.gitignore

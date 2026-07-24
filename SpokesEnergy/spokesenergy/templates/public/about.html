@@ -1,0 +1,48 @@
+{% extends "./base.html" %}
+{% block content %}
+{% load static %}
+<div class="about-main-div">
+    {% include './header.html' %}
+    <section class="inner-hero align-items-center">
+        <div class="container position-relative h-100" data-aos="zoom-out">
+            <div class="row h-100">
+                <div class="col-lg-8 col-md-8 text-white position-relative">
+                    <div class="banner-title">
+                        <h2> To give customers the most engineered experience possible </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="about-content">
+        <div class="container" data-aos="zoom-out">
+            <div class="row align-items-center">
+                <div class="col-md-5 mb-3 mb-md-0">
+                    <div class="about-bg">
+                        <div class="position-relative text-white h-100">
+                            <div class="about-title">
+                                <!--  <h6>About</h6> -->
+                                <h4>Celebrating Opportunities</h4> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 fs-12 text-justify offset-md-1">
+                   <p>The
+                    company “Spokes” is formed to adapt and contribute best current market technologies and providing best of its service to the customer, user, Society Employees and management. The company aims to obtain continuous development by value addition in
+                    terms of quality assurance and consistency.</p> 
+
+                   <p>Spokes identifies the opportunity in the
+                    market where the quality is maintained with profitability assured by process orientation.</p>
+                   
+                   <p class="mb-0">The theme behind spoke formation is to derive new methodology and contribute back to
+                    the industry whereby industry and spoke will be equally benefited.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ======= Footer ======= -->
+    {% include './footer.html' %} 
+    <!-- End Footer -->
+</div><!-- about-main-div -->
+{% endblock %}

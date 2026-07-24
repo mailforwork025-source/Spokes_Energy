@@ -1,0 +1,42 @@
+{% extends "./base.html" %}
+{% block content %}
+{% load static %}
+<div class="product-main-div">
+    {% include './header.html' %}
+    <section class="inner-hero align-items-center">
+        <div class="container position-relative h-100" data-aos="zoom-out">
+            <div class="row h-100">
+                <div class="col-md-6 text-white position-relative">
+                    <div class="banner-title">
+                        <h6 class="fw-bold">Qualification</h6>
+                        <h2> Delivering the needs with high quality </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-light-grey">
+        <div class="container" data-aos="zoom-out">
+           <div class="row">
+               {%for i in page%}
+               <div class="col-lg-4 col-md-6">
+                   <div class="p-3">
+                       <div class="item-card mb-3">
+                            <img src="{%if i.image%}{{i.image.url}}{%endif%}" alt="image-1" class="img-fluid br-20">
+                       </div> 
+                   </div>
+               </div>
+               {%endfor%}
+           </div>
+            <div class="row mt-25">
+                <div class="col-12">
+                {% include 'dashboard/pagination-buttons.html' %}  
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ======= Footer ======= -->
+    {% include './footer.html' %} 
+    <!-- End Footer -->
+</div><!-- product-main-div -->
+{% endblock %}

@@ -1,0 +1,7 @@
+0000000000000000000000000000000000000000 04c68ab5a6c3369837971e9fa3f0f55b9b788f67 nadish1 <nadish@codesap.com> 1783578849 +0530	clone: from gitlab.com:devcodesap/spokesenergy.git
+04c68ab5a6c3369837971e9fa3f0f55b9b788f67 95aae241f8a7c1443d5574638ab89ee7b813dee1 nadish1 <nadish@codesap.com> 1783578884 +0530	checkout: moving from staging to prod
+95aae241f8a7c1443d5574638ab89ee7b813dee1 95aae241f8a7c1443d5574638ab89ee7b813dee1 nadish1 <nadish@codesap.com> 1783578950 +0530	checkout: moving from prod to nadish_cln_cod
+95aae241f8a7c1443d5574638ab89ee7b813dee1 8e1dea39985b6ee5ba123609bae69ece80cbb067 nadish1 <nadish@codesap.com> 1783580823 +0530	commit: remove command code in templates
+8e1dea39985b6ee5ba123609bae69ece80cbb067 8e1dea39985b6ee5ba123609bae69ece80cbb067 nadish1 <nadish@codesap.com> 1783586591 +0530	checkout: moving from nadish_cln_cod to to_staging/nadish_cln_cod
+8e1dea39985b6ee5ba123609bae69ece80cbb067 880b60820aceab986f14f561522b3acd4e4328e8 nadish1 <nadish@codesap.com> 1783586617 +0530	pull origin staging: Merge made by the 'ort' strategy.
+880b60820aceab986f14f561522b3acd4e4328e8 a1d588511f2bcfb2ceea274edaa4e846bf587a08 mailforwork025-source <mailforwork025@gmail.com> 1784883923 +0530	commit: Update Python version in README and clean up duplicate image file

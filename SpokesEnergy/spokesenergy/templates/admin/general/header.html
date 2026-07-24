@@ -1,0 +1,166 @@
+{% load static %}
+<!-- header -->
+<header class="header">
+
+<div class="row">
+<!-- left -->
+ <div class="col-lg-9 col-6 left">
+  <a class="a-logo" href="{% url 'administrator:landing-page' %}">
+	  <img src="{% static 'general/images/logo.png' %}?v=27-10-2022">
+   </a>
+
+    <!-- sidebar-toggle -->
+     <a data-toggle="body" class="sidebar-toggle sidebar_toggle d-none d-lg-block">
+      <span></span>
+	    <span></span>
+	    <span></span>
+	   </a>
+     <a data-toggle="body" class="sidebar-toggle sidebar_toggle_mob d-lg-none">
+      <span></span>
+	    <span></span>
+	    <span></span>
+	   </a>
+	  <div class="swipe-area-btn"></div>
+ </div>
+         
+ <!-- right -->
+ <div class="col-lg-3 right col-6 text-end">
+ <!-- user-profile-dropdown -->
+   <div class="dropdown user-profile-dropdown">
+    <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <img src="{% static 'general/images/icons/default-user-icon.png' %}">
+      <div>{{request.session.user}}</div>
+    </button>
+    <ul class="dropdown-menu">
+      <li>
+        <button class="dropdown-item" type="button" data-bs-toggle="offcanvas" data-bs-target="#change_password_popup">Change password</button>
+      </li>
+      <li>
+        <a class="dropdown-item" href="{% url 'user:logout' %}">Logout</a>
+      </li>
+    </ul>
+  </div>
+  <!-- /user-profile-dropdown -->
+ </div>
+ 
+ </div>
+</header>
+<!-- /header -->
+
+ 
+  <!-- side-menu -->
+   <aside id="sidebar">
+    <div class="sidebar-menu">
+      <ul>
+        <!-- sidebar-toggle -->
+         <a data-toggle="body" class="sidebar-toggle sidebar_toggle_mob"></a>
+          <li>
+           <a href="{%url 'administrator:landing-page'%}" title="Blog">
+            <div class="icon">
+             <i class="fa fa-star-o" aria-hidden="true"></i>
+            </div>
+            <span>Blog</span>
+           </a>
+         </li>
+         <li>
+          <a href="{%url 'administrator:list-contact-us'%}" title="Contact Us">
+           <div class="icon">
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+           </div>
+           <span>Contact Us</span>
+          </a>
+        </li>
+         <li>
+          <a href="{%url 'administrator:list-gallery'%}" title="Gallery">
+           <div class="icon">
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+           </div>
+           <span>Gallery</span>
+          </a>
+        </li>
+        <li>
+          <a href="{%url 'administrator:list-patners'%}" title="Patners">
+           <div class="icon">
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+           </div>
+           <span>Patners</span>
+          </a>
+        </li>
+        <li>
+          <a href="{%url 'administrator:list-products'%}" title="Products">
+           <div class="icon">
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+           </div>
+           <span>Products</span>
+          </a>
+        </li>
+       
+        <li>
+          <a href="{%url 'administrator:list-service'%}" title="Service">
+           <div class="icon">
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+           </div>
+           <span>Service</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="{%url 'administrator:list-testimonial'%}" title="Testimonial">
+           <div class="icon">
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+           </div>
+           <span>Testimonial</span>
+          </a>
+        </li>
+       
+      
+      </ul>
+    </div> 
+    </aside>
+    <!-- /side-menu -->
+
+   <div class="main-wrapper">
+
+
+<!-- change_password_popup -->
+<div class="offcanvas offcanvas-end offcanvas-md" tabindex="-1" id="change_password_popup">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title font-bold">Change password</h5>
+    <button type="button" class="btn-icon btn-offcanvas-close" data-bs-dismiss="offcanvas" aria-label="Close">
+      <img src="{% static 'general/images/icons/arrow-right.png' %}">
+    </button>
+  </div>  
+  <div class="offcanvas-body">
+    <form method="post" action="{% url 'user:change-password' %}?return={{request.get_full_path|urlencode}}">{%csrf_token %}
+    <div class="offcanvas-inner-body">
+      <div class="form-default">
+        <div class="form-body">
+          <div class="row">
+            <div class="col-md-6">
+              <label class="form-label">Username</label>
+              <input class="form-control" type="text" name="username" value="{{request.session.data.username}}"  readonly />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Old Password</label>
+              <input class="form-control" type="password" value="" name="old_password" placeholder="Enter Password" required />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">New Password</label>
+              <input class="form-control" type="password" value="" name="new_password" placeholder="Enter Password" required />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Confirm Password</label>
+              <input class="form-control" type="password" value="" name="confirm_password" placeholder="Enter Password" required />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="offcanvas-footer text-end">
+      <button type="button" class="btn btn-secondary min-width-100-px m-r-15" data-bs-dismiss="offcanvas" aria-label="Close">Close</button>
+      <button class="btn btn-l-green min-width-100-px">Update</button>
+    </div>
+   </form>
+  </div>
+</div>
+<!-- /change_password_popup -->
